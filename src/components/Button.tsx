@@ -3,7 +3,7 @@ import {FC} from "react";
 type ButtonType = {
     callback: ()=>void
     name:string
-    disabled: boolean
+    disabled?: boolean
 }
 export const Button:FC<ButtonType> = ({callback, name, disabled}) => {
     return (
