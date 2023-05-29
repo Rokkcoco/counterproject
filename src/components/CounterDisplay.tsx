@@ -10,7 +10,7 @@ type CounterDisplayType = {
 export const CounterDisplay:FC<CounterDisplayType> = ({counterValue, displayText, counterLimit, errorLimit}) => {
     return (
         <div className={counterLimit || errorLimit ? `${s.display} ${s.max}` : `${s.display}`}>
-            {errorLimit ? "incorrect value" : displayText ? counterValue : "set value and press set button"}
+            {errorLimit ? "incorrect value" : counterValue===null ? "set value and press set button" : displayText ? counterValue : "set value and press set button"}
         </div>
     );
 };
