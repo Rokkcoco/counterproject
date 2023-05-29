@@ -63,7 +63,9 @@ function App() {
         setDisplayText(false)
         setInputMax(value)
     }
-
+    //Переделать юзстейт в объект
+    //Добавить типизации от Игната
+    //Вынести условия в переменные
 
     return (
         <div className='main'>
