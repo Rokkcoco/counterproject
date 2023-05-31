@@ -38,13 +38,10 @@ function App() {
         localStorage.setItem("Maximum counter value", JSON.stringify(inputMax))
     }
 
-    const counterHandler = () => {
-        setCounter(state => state + 1)
-    }
+    const counterHandler = () => setCounter(state => state + 1)
 
-    const resetCounter = () => {
-        setCounter(inputMin)
-    }
+
+    const resetCounter = () => setCounter(inputMin)
 
     const inputMinValueHandler = (value: number) => {
         setCounter(NaN)
@@ -66,7 +63,7 @@ function App() {
     //Переделать юзстейт в объект
     //Добавить типизации от Игната
     //Вынести условия в переменные
-
+    //добавить {...restPros}
     return (
         <div className='main'>
 
