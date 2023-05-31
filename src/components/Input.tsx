@@ -8,9 +8,8 @@ type InputType = {
     error?: boolean
 }
 export const Input:FC<InputType> = ({value, type, onChange, error}) => {
-    const onChangeHandler = (event:ChangeEvent<HTMLInputElement>) => {
-        onChange(Number(event.currentTarget.value))
-    }
+    const onChangeHandler = (event:ChangeEvent<HTMLInputElement>) => onChange(Number(event.currentTarget.value))
+
     return (
         <input className={error ? s.error : ''} type={type} value={value} onChange={onChangeHandler}/>
     )
