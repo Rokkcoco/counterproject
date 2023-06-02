@@ -4,6 +4,16 @@ import {Button} from "./components/Button.tsx";
 import {Input} from "./components/Input.tsx";
 import {CounterDisplay} from "./components/CounterDisplay.tsx";
 
+type StoreType = {
+    inputMin: number,
+    inputMax: number,
+    counter: number,
+    disableValue: number,
+    displayText: boolean,
+    resetButtonState: boolean,
+    incButtonState: boolean,
+    settingsButtonState: boolean
+}
 
 function App() {
     const [inputMin, setInputMin] = useState(0)
@@ -15,21 +25,27 @@ function App() {
     const [incButtonState, setIncButtonState] = useState(false)
     const [settingsButtonState, setSettingsButtonState] = useState(false)
 
-    // const [store, setStore] = useState({
-    //     inputMin: 0,
-    //     inputMax: 5,
-    //     counter: 0,
-    //     disableValue: 0,
-    //     displayText: true,
-    //     resetButtonState: false,
-    //     incButtonState: false,
-    //     settingsButtonState: false
-    // })
+    const [store, setStore] = useState<StoreType>({
+        inputMin: 0,
+        inputMax: 5,
+        counter: 0,
+        disableValue: 0,
+        displayText: true,
+        resetButtonState: false,
+        incButtonState: false,
+        settingsButtonState: false
+    })
     const disableValue = 0
     const inputMaxLowerThenInputMin = inputMax <= inputMin
     const counterEqualToInputMax = counter === inputMax
     const disableValueHigherThenInputMin = inputMin < disableValue
     const counterEqualNull = counter === null
+
+    const disableValue2 = store.disableValue
+    const inputMaxLowerThenInputMin2 = store.inputMax <= store.inputMin
+    const counterEqualToInputMax2 = store.counter === store.inputMax
+    const disableValueHigherThenInputMin2 = store.inputMin < store.disableValue
+    const counterEqualNull2 = store.counter === null
 
     useEffect(() => {
         const minValue = localStorage.getItem("Minimum counter value")
@@ -38,6 +54,10 @@ function App() {
             setInputMin(JSON.parse(minValue))
             setInputMax(JSON.parse(maxValue))
             setCounter(JSON.parse(minValue))
+            setStore({...store,
+                inputMin: JSON.parse(minValue),
+                inputMax: JSON.parse(maxValue),
+                counter: JSON.parse(minValue)})
         }
     }, [])
 
@@ -52,10 +72,24 @@ function App() {
         localStorage.setItem("Maximum counter value", JSON.stringify(inputMax))
     }
 
+    const setterHandlerTwooo = () => {
+        setStore({...store,
+        displayText: true,
+        resetButtonState: false,
+        incButtonState: false,
+        settingsButtonState: true,
+        })
+        localStorage.setItem("Minimum counter value", JSON.stringify(inputMin))
+        localStorage.setItem("Maximum counter value", JSON.stringify(inputMax))
+    }
+
     const counterHandler = () => setCounter(state => state + 1)
+    const counterHandlerTwooo = () => setStore({...store, counter: store.counter +1})
 
 
     const resetCounter = () => setCounter(inputMin)
+
+    const resetCounterTwo = () => setStore({...store, counter: store.inputMin})
 
     const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setCounter(NaN)
@@ -64,6 +98,18 @@ function App() {
         setIncButtonState(true)
         setDisplayText(false)
         setInputMin(Number(e.currentTarget.value))
+
+    }
+
+    const inputMinValueHandlerTwooo = (e: ChangeEvent<HTMLInputElement>) => {
+        setStore({...store,
+            counter: NaN,
+        settingsButtonState: false,
+        resetButtonState: true,
+        incButtonState: true,
+            displayText: false,
+            inputMin: Number(e.currentTarget.value)
+        })
     }
 
     const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -73,6 +119,17 @@ function App() {
         setIncButtonState(true)
         setDisplayText(false)
         setInputMax(Number(e.currentTarget.value))
+    }
+
+    const inputMaxValueHandlerTwooo = (e: ChangeEvent<HTMLInputElement>) => {
+        setStore({...store,
+            counter: NaN,
+            settingsButtonState: false,
+            resetButtonState: true,
+            incButtonState: true,
+            displayText: false,
+            inputMax: Number(e.currentTarget.value)
+        })
     }
     //Переделать юзстейт в объект
     //Добавить типизации от Игната
