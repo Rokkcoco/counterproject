@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {ChangeEvent, useEffect, useState} from 'react'
 import './App.css'
 import {Button} from "./components/Button.tsx";
 import {Input} from "./components/Input.tsx";
@@ -14,8 +14,22 @@ function App() {
     const [resetButtonState, setResetButtonState] = useState(false)
     const [incButtonState, setIncButtonState] = useState(false)
     const [settingsButtonState, setSettingsButtonState] = useState(false)
-    const disableValue = 0
 
+    // const [store, setStore] = useState({
+    //     inputMin: 0,
+    //     inputMax: 5,
+    //     counter: 0,
+    //     disableValue: 0,
+    //     displayText: true,
+    //     resetButtonState: false,
+    //     incButtonState: false,
+    //     settingsButtonState: false
+    // })
+    const disableValue = 0
+    const inputMaxLowerThenInputMin = inputMax <= inputMin
+    const counterEqualToInputMax = counter === inputMax
+    const disableValueHigherThenInputMin = inputMin < disableValue
+    const counterEqualNull = counter === null
 
     useEffect(() => {
         const minValue = localStorage.getItem("Minimum counter value")
@@ -43,52 +57,53 @@ function App() {
 
     const resetCounter = () => setCounter(inputMin)
 
-    const inputMinValueHandler = (value: number) => {
+    const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setCounter(NaN)
         setSettingsButtonState(false)
         setResetButtonState(true)
         setIncButtonState(true)
         setDisplayText(false)
-        setInputMin(value)
+        setInputMin(Number(e.currentTarget.value))
     }
 
-    const inputMaxValueHandler = (value: number) => {
+    const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setCounter(NaN)
         setSettingsButtonState(false)
         setResetButtonState(true)
         setIncButtonState(true)
         setDisplayText(false)
-        setInputMax(value)
+        setInputMax(Number(e.currentTarget.value))
     }
     //Переделать юзстейт в объект
     //Добавить типизации от Игната
-    //Вынести условия в переменные
     //добавить {...restPros}
+    //вынести в переменные
+
     return (
         <div className='main'>
 
             <div className="inputs">
                 <div className="input">Minimum value:<Input value={inputMin} type={"number"}
                                                             onChange={inputMinValueHandler}
-                                                            error={inputMax <= inputMin || inputMin < disableValue}/>
+                                                            error={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
                 </div>
                 <div className="input">Maximum value:<Input value={inputMax} type={"number"}
                                                             onChange={inputMaxValueHandler}
-                                                            error={inputMax <= inputMin}/></div>
+                                                            error={inputMaxLowerThenInputMin}/></div>
                 <div className="buttonSetter"><Button callback={setterHandler} name={"setter"}
-                                                      disabled={settingsButtonState || inputMin < disableValue || inputMax <= inputMin}/>
+                                                      disabled={settingsButtonState || disableValueHigherThenInputMin || inputMaxLowerThenInputMin}/>
                 </div>
             </div>
 
 
             <div className="inputs">
-                <CounterDisplay counterLimit={counter === inputMax} counterValue={counter} displayText={displayText}
-                                errorLimit={inputMax <= inputMin || inputMin < disableValue}/>
+                <CounterDisplay counterLimit={counterEqualToInputMax} counterValue={counter} displayText={displayText}
+                                errorLimit={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
                 <div className="buttonsDisplay"><span className="buttonSetter"> <Button callback={counterHandler}
                                                                                         name={"counter"}
-                                                                                        disabled={incButtonState || counter === inputMax || counter === null}/></span>
+                                                                                        disabled={incButtonState || counterEqualToInputMax || counterEqualNull}/></span>
                     <span className="buttonSetter"><Button callback={resetCounter} name={"reset"}
-                                                           disabled={resetButtonState || counter === null}/></span>
+                                                           disabled={resetButtonState || counterEqualNull}/></span>
                 </div>
             </div>
         </div>

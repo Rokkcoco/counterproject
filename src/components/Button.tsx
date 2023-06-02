@@ -1,13 +1,16 @@
-import {FC} from "react";
+import {ButtonHTMLAttributes, DetailedHTMLProps, FC} from "react";
 
-type ButtonType = {
+type DefaulInputPropsType = DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+>
+
+type ButtonType = DefaulInputPropsType & {
     callback: ()=>void
-    name:string
-    disabled?: boolean
 }
-export const Button:FC<ButtonType> = ({callback, name, disabled}) => {
+export const Button:FC<ButtonType> = ({callback, name, disabled, ...restProps}) => {
     return (
-        <button onClick={callback} disabled={disabled}>{name}</button>
+        <button onClick={callback} disabled={disabled} {...restProps}>{name}</button>
     );
 };
 

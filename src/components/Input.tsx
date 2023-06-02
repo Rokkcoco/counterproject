@@ -1,17 +1,19 @@
-import {ChangeEvent, FC} from "react";
+import {ChangeEvent, DetailedHTMLProps, FC, InputHTMLAttributes} from "react";
 import s from "./Input.module.css"
 
-type InputType = {
-    value: number
-    type:string
-    onChange: (value: number)=>void
+type DefaulInputPropsType = DetailedHTMLProps<
+    InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+>
+
+type InputType = DefaulInputPropsType & {
     error?: boolean
 }
-export const Input:FC<InputType> = ({value, type, onChange, error}) => {
-    const onChangeHandler = (event:ChangeEvent<HTMLInputElement>) => onChange(Number(event.currentTarget.value))
+export const Input:FC<InputType> = ({ error, type, value, onChange, ...restProps}) => {
+    const onChangeHandler = (event:ChangeEvent<HTMLInputElement>) =>  onChange && onChange(event)
 
     return (
-        <input className={error ? s.error : ''} type={type} value={value} onChange={onChangeHandler}/>
+        <input className={error ? s.error : ''} type={type} value={value} onChange={onChangeHandler} {...restProps}/>
     )
 }
 
