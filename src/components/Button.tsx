@@ -1,4 +1,4 @@
-import {ButtonHTMLAttributes, DetailedHTMLProps, FC} from "react";
+import {ButtonHTMLAttributes, DetailedHTMLProps} from "react";
 
 type DefaulInputPropsType = DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
@@ -8,7 +8,7 @@ type DefaulInputPropsType = DetailedHTMLProps<
 type ButtonType = DefaulInputPropsType & {
     callback: ()=>void
 }
-export const Button:FC<ButtonType> = ({callback, name, disabled, ...restProps}) => {
+export const Button= ({callback, name, disabled, ...restProps}:ButtonType) => {
     return (
         <button onClick={callback} disabled={disabled} {...restProps}>{name}</button>
     );
