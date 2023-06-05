@@ -91,10 +91,7 @@ function App() {
             inputMax: Number(e.currentTarget.value)
         })
     }
-    //Переделать юзстейт в объект
-    //Добавить типизации от Игната
-    //добавить {...restPros}
-    //вынести в переменные
+
 
     return (
         <div className='main'>

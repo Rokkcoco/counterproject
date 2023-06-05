@@ -9,9 +9,10 @@ type ButtonType = DefaulInputPropsType & {
     callback: ()=>void
 }
 
-export const Button= ({callback, name, disabled, ...restProps}:ButtonType) => {
+export const Button= ({name, callback, ...restProps}:ButtonType) => {
     return (
-        <button onClick={callback} disabled={disabled} {...restProps}>{name}</button>
+        <button {...restProps} onClick={callback}>{name}</button>
     );
 };
 
+//disabled={disabled}

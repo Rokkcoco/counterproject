@@ -9,11 +9,11 @@ type DefaulInputPropsType = DetailedHTMLProps<
 type InputType = DefaulInputPropsType & {
     error?: boolean
 }
-export const Input= ({ error, type, value, onChange, ...restProps}: InputType) => {
+export const Input= ({ error, onChange, ...restProps}: InputType) => {
     const onChangeHandler = (event:ChangeEvent<HTMLInputElement>) =>  onChange && onChange(event)
 
     return (
-        <input className={error ? s.error : ''} type={type} value={value} onChange={onChangeHandler} {...restProps}/>
+        <input className={error ? s.error : ''} onChange={onChangeHandler} {...restProps}/>
     )
 }
-
+//type={type} value={value}
