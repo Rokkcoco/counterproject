@@ -97,12 +97,14 @@ function App() {
 
             <div className="inputs">
                 <div className="input">Minimum value:
-                    <Input value={store.inputMin} type={"number"}
+                    <Input value={store.inputMin}
+                           type={"number"}
                            onChange={inputMinValueHandler}
                            error={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
                 </div>
                 <div className="input">Maximum value:
-                    <Input value={store.inputMax} type={"number"}
+                    <Input value={store.inputMax}
+                           type={"number"}
                            onChange={inputMaxValueHandler}
                            error={inputMaxLowerThenInputMin}/></div>
                 <div className="buttonSetter">
@@ -114,7 +116,8 @@ function App() {
 
 
             <div className="inputs">
-                <CounterDisplay counterLimit={counterEqualToInputMax} counterValue={store.counter}
+                <CounterDisplay counterLimit={counterEqualToInputMax}
+                                counterValue={store.counter}
                                 displayText={store.displayText}
                                 errorLimit={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
                 <div className="buttonsDisplay">
