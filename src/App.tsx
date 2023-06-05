@@ -31,7 +31,6 @@ function App() {
     const inputMaxLowerThenInputMin = store.inputMax <= store.inputMin
     const counterEqualToInputMax = store.counter === store.inputMax
     const disableValueHigherThenInputMin = store.inputMin < store.disableValue
-    const counterEqualNull = store.counter === null
 
     useEffect(() => {
         const minValue = localStorage.getItem("Minimum counter value")
@@ -97,15 +96,19 @@ function App() {
         <div className='main'>
 
             <div className="inputs">
-                <div className="input">Minimum value:<Input value={store.inputMin} type={"number"}
-                                                            onChange={inputMinValueHandler}
-                                                            error={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
+                <div className="input">Minimum value:
+                    <Input value={store.inputMin} type={"number"}
+                           onChange={inputMinValueHandler}
+                           error={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
                 </div>
-                <div className="input">Maximum value:<Input value={store.inputMax} type={"number"}
-                                                            onChange={inputMaxValueHandler}
-                                                            error={inputMaxLowerThenInputMin}/></div>
-                <div className="buttonSetter"><Button callback={setterHandler} name={"setter"}
-                                                      disabled={store.settingsButtonState || disableValueHigherThenInputMin || inputMaxLowerThenInputMin}/>
+                <div className="input">Maximum value:
+                    <Input value={store.inputMax} type={"number"}
+                           onChange={inputMaxValueHandler}
+                           error={inputMaxLowerThenInputMin}/></div>
+                <div className="buttonSetter">
+                    <Button callback={setterHandler}
+                            name={"setter"}
+                            disabled={store.settingsButtonState || disableValueHigherThenInputMin || inputMaxLowerThenInputMin}/>
                 </div>
             </div>
 
@@ -114,11 +117,15 @@ function App() {
                 <CounterDisplay counterLimit={counterEqualToInputMax} counterValue={store.counter}
                                 displayText={store.displayText}
                                 errorLimit={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
-                <div className="buttonsDisplay"><span className="buttonSetter"> <Button callback={counterHandler}
-                                                                                        name={"counter"}
-                                                                                        disabled={store.incButtonState || counterEqualToInputMax || counterEqualNull}/></span>
-                    <span className="buttonSetter"><Button callback={resetCounter} name={"reset"}
-                                                           disabled={store.resetButtonState || counterEqualNull}/></span>
+                <div className="buttonsDisplay">
+                    <span className="buttonSetter">
+                        <Button callback={counterHandler}
+                                name={"counter"}
+                                disabled={store.incButtonState || counterEqualToInputMax}/></span>
+                    <span className="buttonSetter">
+                        <Button callback={resetCounter}
+                                name={"reset"}
+                                disabled={store.resetButtonState}/></span>
                 </div>
             </div>
         </div>
