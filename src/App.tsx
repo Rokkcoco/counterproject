@@ -17,16 +17,7 @@ type StoreType = {
 
 function App() {
 
-    const [store, setStore] = useState<StoreType>({
-        inputMin: 0,
-        inputMax: 5,
-        counter: 0,
-        disableValue: 0,
-        displayText: true,
-        resetButtonState: false,
-        incButtonState: false,
-        settingsButtonState: false
-    })
+    const [store, setStore] = useState<StoreType>()
 
     const inputMaxLowerThenInputMin = store.inputMax <= store.inputMin
     const counterEqualToInputMax = store.counter === store.inputMax
