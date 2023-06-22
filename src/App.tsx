@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect, useState} from 'react'
+import {ChangeEvent, useEffect} from 'react'
 import './App.css'
 import {Button} from "./components/Button.tsx";
 import {Input} from "./components/Input.tsx";

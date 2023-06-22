@@ -23,7 +23,7 @@ export const counterReducer = (state: InitStateType = initState, action: counter
                 resetButtonState: true,
                 incButtonState: true,
                 displayText: false,
-                inputMax: Number(action.payload.number)
+                inputMax: action.payload.number
             }
         case "INPUT-MIN-VALUE-SET":
             return {
@@ -33,7 +33,7 @@ export const counterReducer = (state: InitStateType = initState, action: counter
                 resetButtonState: true,
                 incButtonState: true,
                 displayText: false,
-                inputMin: Number(action.payload.number)
+                inputMin: action.payload.number
             }
         case "SET-BUTTON-HANDLER":
             return {
