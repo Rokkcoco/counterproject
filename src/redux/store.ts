@@ -1,4 +1,5 @@
 import {combineReducers, legacy_createStore} from "redux";
+import {counterReducer} from "./counter-reducer.ts";
 
 
 const reducers = combineReducers({

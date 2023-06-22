@@ -3,21 +3,23 @@ import './App.css'
 import {Button} from "./components/Button.tsx";
 import {Input} from "./components/Input.tsx";
 import {CounterDisplay} from "./components/CounterDisplay.tsx";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStoreType} from "./redux/store.ts";
+import {
+    incrementCounterAC,
+    InitStateType,
+    inputMaxValueSetterAC,
+    inputMinValueSetterAC,
+    resetCounterAC
+} from "./redux/counter-reducer.ts";
 
-type StoreType = {
-    inputMin: number,
-    inputMax: number,
-    counter: number,
-    disableValue: number,
-    displayText: boolean,
-    resetButtonState: boolean,
-    incButtonState: boolean,
-    settingsButtonState: boolean
-}
+
 
 function App() {
+    const dispatch = useDispatch()
+    const store = useSelector<AppStoreType, InitStateType>(state => state.counter)
 
-    const [store, setStore] = useState<StoreType>()
+
 
     const inputMaxLowerThenInputMin = store.inputMax <= store.inputMin
     const counterEqualToInputMax = store.counter === store.inputMax
@@ -51,36 +53,40 @@ function App() {
     }
 
 
-    const counterHandler = () => setStore({...store, counter: store.counter + 1})
+    const counterHandler = () => dispatch(incrementCounterAC())
+        //setStore({...store, counter: store.counter + 1})
 
 
-    const resetCounter = () => setStore({...store, counter: store.inputMin})
+    const resetCounter = () => dispatch(resetCounterAC())
+        //setStore({...store, counter: store.inputMin})
 
 
-    const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setStore({
-            ...store,
-            counter: NaN,
-            settingsButtonState: false,
-            resetButtonState: true,
-            incButtonState: true,
-            displayText: false,
-            inputMin: Number(e.currentTarget.value)
-        })
-    }
+    const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => dispatch(inputMinValueSetterAC(+e.currentTarget.value))
+    // {
+    //     setStore({
+    //         ...store,
+    //         counter: NaN,
+    //         settingsButtonState: false,
+    //         resetButtonState: true,
+    //         incButtonState: true,
+    //         displayText: false,
+    //         inputMin: Number(e.currentTarget.value)
+    //     })
+    // }
 
 
-    const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setStore({
-            ...store,
-            counter: NaN,
-            settingsButtonState: false,
-            resetButtonState: true,
-            incButtonState: true,
-            displayText: false,
-            inputMax: Number(e.currentTarget.value)
-        })
-    }
+    const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => dispatch(inputMaxValueSetterAC(+e.currentTarget.value))
+    // {
+    //     setStore({
+    //         ...store,
+    //         counter: NaN,
+    //         settingsButtonState: false,
+    //         resetButtonState: true,
+    //         incButtonState: true,
+    //         displayText: false,
+    //         inputMax: Number(e.currentTarget.value)
+    //     })
+    // }
 
 
     return (
