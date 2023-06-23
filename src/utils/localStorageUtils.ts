@@ -1,5 +1,5 @@
 
-import {InitStateType} from "../redux/counter-reducer.ts";
+import {initState, InitStateType} from "../redux/counter-reducer.ts";
 
 
 
@@ -8,16 +8,18 @@ export const loadState = () => {
     try {
         const minValue = localStorage.getItem('Minimum counter value');
         const maxValue = localStorage.getItem("Maximum counter value");
-
+        console.log(minValue)
         if (!minValue && maxValue) {
             return undefined;
         }
         if (minValue && maxValue) {
-            res = {  inputMin:(JSON.parse(minValue)), inputMax: (JSON.parse(maxValue))}
+            res = {counter: {...initState,counter: Number(JSON.parse(minValue)),
+                    inputMin:Number(JSON.parse(minValue)),
+                    inputMax: Number(JSON.parse(maxValue)),
+                   }
+            }
             return res
-            //res
         }
-
     } catch (err) {
         return undefined;
     }

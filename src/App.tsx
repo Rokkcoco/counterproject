@@ -18,8 +18,9 @@ import {
 function App() {
     const dispatch = useDispatch()
     const store = useSelector<AppStoreType, InitStateType>(state => state.counter)
-
-
+    const store2 = useSelector<AppStoreType, InitStateType>(state => state.inputMin)
+    console.log(store)
+    console.log(store2)
 
     const inputMaxLowerThenInputMin = store.inputMax <= store.inputMin
     const counterEqualToInputMax = store.counter === store.inputMax
