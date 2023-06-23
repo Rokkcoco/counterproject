@@ -1,4 +1,4 @@
-const initState = {
+export const initState = {
     inputMin: 0,
     inputMax: 5,
     counter: 0,

@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect} from 'react'
+import {ChangeEvent} from 'react'
 import './App.css'
 import {Button} from "./components/Button.tsx";
 import {Input} from "./components/Input.tsx";
@@ -10,7 +10,7 @@ import {
     InitStateType,
     inputMaxValueSetterAC,
     inputMinValueSetterAC,
-    resetCounterAC
+    resetCounterAC, setButtonHandlerAC
 } from "./redux/counter-reducer.ts";
 
 
@@ -25,32 +25,33 @@ function App() {
     const counterEqualToInputMax = store.counter === store.inputMax
     const disableValueHigherThenInputMin = store.inputMin < store.disableValue
 
-    useEffect(() => {
-        const minValue = localStorage.getItem("Minimum counter value")
-        const maxValue = localStorage.getItem("Maximum counter value")
-        if (minValue && maxValue) {
-            setStore({
-                ...store,
-                inputMin: JSON.parse(minValue),
-                inputMax: JSON.parse(maxValue),
-                counter: JSON.parse(minValue)
-            })
-        }
-    }, [])
+    // useEffect(() => {
+    //     const minValue = localStorage.getItem("Minimum counter value")
+    //     const maxValue = localStorage.getItem("Maximum counter value")
+    //     if (minValue && maxValue) {
+    //         setStore({
+    //             ...store,
+    //             inputMin: JSON.parse(minValue),
+    //             inputMax: JSON.parse(maxValue),
+    //             counter: JSON.parse(minValue)
+    //         })
+    //     }
+    // }, [])
 
 
-    const setterHandler = () => {
-        setStore({
-            ...store,
-            counter: store.inputMin,
-            displayText: true,
-            resetButtonState: false,
-            incButtonState: false,
-            settingsButtonState: true,
-        })
-        localStorage.setItem("Minimum counter value", JSON.stringify(store.inputMin))
-        localStorage.setItem("Maximum counter value", JSON.stringify(store.inputMax))
-    }
+    const setterHandler = () => dispatch(setButtonHandlerAC())
+    // {
+    //     setStore({
+    //         ...store,
+    //         counter: store.inputMin,
+    //         displayText: true,
+    //         resetButtonState: false,
+    //         incButtonState: false,
+    //         settingsButtonState: true,
+    //     })
+    //     localStorage.setItem("Minimum counter value", JSON.stringify(store.inputMin))
+    //     localStorage.setItem("Maximum counter value", JSON.stringify(store.inputMax))
+    // }
 
 
     const counterHandler = () => dispatch(incrementCounterAC())
