@@ -1,5 +1,5 @@
 import {combineReducers, legacy_createStore} from "redux";
-import {counterReducer, initState} from "./counter-reducer.ts";
+import {counterReducer} from "./counter-reducer.ts";
 import { saveState} from "../utils/localStorageUtils.ts";
 
 
@@ -30,8 +30,8 @@ const store =legacy_createStore(reducers,preloadedState)
 
 
 store.subscribe(() => {
-    console.log(store.getState())
-   saveState(store.getState())
+    console.log(store.getState().counter)
+   saveState(store.getState().counter)
 })
 
 export type AppStoreType = ReturnType<typeof reducers>

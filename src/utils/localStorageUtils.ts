@@ -1,6 +1,6 @@
 
-import {initState} from "../redux/counter-reducer.ts";
-import {AppStoreType} from "../redux/store.ts";
+import {InitStateType} from "../redux/counter-reducer.ts";
+
 
 
 export const loadState = () => {
@@ -13,7 +13,7 @@ export const loadState = () => {
             return undefined;
         }
         if (minValue && maxValue) {
-            res = {...initState,  inputMin:(JSON.parse(minValue)), inputMax: (JSON.parse(maxValue))}
+            res = {  inputMin:(JSON.parse(minValue)), inputMax: (JSON.parse(maxValue))}
             return res
             //res
         }
@@ -23,10 +23,10 @@ export const loadState = () => {
     }
 };
 
-export const saveState = (state: AppStoreType) => {
+export const saveState = (state: InitStateType) => {
     try {
-        const minValue = JSON.stringify(state.counter.inputMin);
-        const maxValue = JSON.stringify(state.counter.inputMax);
+        const minValue = JSON.stringify(state.inputMin);
+        const maxValue = JSON.stringify(state.inputMax);
         localStorage.setItem('Minimum counter value', minValue);
         localStorage.setItem('Maximum counter value', maxValue);
     } catch {
