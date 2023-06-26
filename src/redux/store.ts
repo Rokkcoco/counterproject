@@ -13,7 +13,6 @@ const rootReducer = combineReducers({
 
 
 const store =legacy_createStore(rootReducer,loadState())
-console.log(store.getState().counter)
 
 
 
@@ -24,4 +23,7 @@ store.subscribe(throttle(() => {
 export type AppStateType = ReturnType<typeof rootReducer>
 
 export default store
+
+// @ts-ignore
+window.store = store
 

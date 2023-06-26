@@ -8,7 +8,6 @@ export const loadState = () => {
     try {
         const minValue = localStorage.getItem('Minimum counter value');
         const maxValue = localStorage.getItem("Maximum counter value");
-        console.log(minValue)
         if (!minValue && maxValue) {
             return undefined;
         }
