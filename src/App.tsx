@@ -49,7 +49,7 @@ function App() {
         //setStore({...store, counter: store.counter + 1})
 
 
-    const resetCounter = () => resetCounterAC()
+    const resetCounter =() => resetCounterAC()
         //setStore({...store, counter: store.inputMin})
 
 
