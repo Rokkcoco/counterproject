@@ -6,21 +6,12 @@ import {ChangeEvent} from "react";
 
 export const useCounterWithRedux = () => {
     const {
-        inputMin,
-        inputMax,
-        counter,
-        settingsButtonState,
-        displayText,
-        incButtonState,
-        resetButtonState,
-        disableValue
+        inputMin, inputMax, counter,
+        settingsButtonState, displayText, incButtonState,
+        resetButtonState, disableValue
     } = useTypedSelector(counterSelector)
     const {
-        setButtonHandlerAC,
-        incrementCounterAC,
-        resetCounterAC,
-        inputMinValueSetterAC,
-        inputMaxValueSetterAC
+        setButtonHandlerAC, incrementCounterAC, resetCounterAC, inputMinValueSetterAC, inputMaxValueSetterAC
     } = useActions()
 
     const setterHandler = () => setButtonHandlerAC()

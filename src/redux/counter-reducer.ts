@@ -56,33 +56,6 @@ export const counterReducer = (state: InitStateType = initState, action: counter
     }
 }
 
-
-// export const incrementCounterAC = () => ({
-//     type: "INCREASE-COUNTER"
-// }) as const
-//
-// export const resetCounterAC = () => ({
-//     type: "RESET-COUNTER"
-// }) as const
-//
-// export const inputMinValueSetterAC = (number: number) => ({
-//     type: "INPUT-MIN-VALUE-SET",
-//     payload: {
-//         number
-//     }
-// }) as const
-//
-// export const inputMaxValueSetterAC = (number: number) => ({
-//     type: "INPUT-MAX-VALUE-SET",
-//     payload: {
-//         number
-//     }
-// }) as const
-//
-// export const setButtonHandlerAC = () => ({
-//     type: "SET-BUTTON-HANDLER"
-// }) as const
-
 export type counterReducerActionType =
     incrementCounterACType
     | resetCounterAC
@@ -92,14 +65,3 @@ export type counterReducerActionType =
 
 
 export type InitStateType = typeof initState
-
-// type StoreType = {
-//     inputMin: number,
-//     inputMax: number,
-//     counter: number,
-//     disableValue: number,
-//     displayText: boolean,
-//     resetButtonState: boolean,
-//     incButtonState: boolean,
-//     settingsButtonState: boolean
-// }
