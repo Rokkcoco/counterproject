@@ -16,4 +16,4 @@ export const Input= ({ error, onChange, ...restProps}: InputType) => {
         <input className={error ? s.error : ''} onChange={onChangeHandler} {...restProps}/>
     )
 }
-//type={type} value={value}
+//type={type} value={value}, надо ли убирать type omit?

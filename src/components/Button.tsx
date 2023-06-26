@@ -16,3 +16,4 @@ export const Button= ({name, callback, ...restProps}:ButtonType) => {
 };
 
 //disabled={disabled}
+//надо ли omit и type ?
