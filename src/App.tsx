@@ -5,10 +5,11 @@ import {Input} from "./components/Input.tsx";
 import {CounterDisplay} from "./components/CounterDisplay.tsx";
 import {useTypedSelector} from "./hooks/useTypedSelector.ts";
 import {useActions} from "./hooks/useActions.ts";
+import {counterSelector} from "./redux/selectors.ts";
 
 
 function App() {
-    const {inputMin, inputMax, counter, settingsButtonState,  displayText, incButtonState, resetButtonState, disableValue} = useTypedSelector(state => state.counter)
+    const {inputMin, inputMax, counter, settingsButtonState,  displayText, incButtonState, resetButtonState, disableValue} = useTypedSelector(counterSelector)
     const { setButtonHandlerAC, incrementCounterAC, resetCounterAC, inputMinValueSetterAC, inputMaxValueSetterAC} = useActions()
 
     const inputMaxLowerThenInputMin = inputMax <= inputMin
