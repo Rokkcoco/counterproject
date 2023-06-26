@@ -18,6 +18,6 @@ store.subscribe(() => {
    saveState(store.getState().counter)
 })
 // export type StoreType = typeof store
-export type AppStoreType = ReturnType<typeof rootReducer>
+export type AppStateType = ReturnType<typeof rootReducer>
 
 export default store

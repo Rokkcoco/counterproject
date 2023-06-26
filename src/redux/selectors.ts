@@ -1,3 +1,3 @@
-import {AppStoreType} from "./store.ts";
+import {AppStateType} from "./store.ts";
 
-export const counterSelector = (state: AppStoreType) =>state.counter
+export const counterSelector = (state: AppStateType) =>state.counter
