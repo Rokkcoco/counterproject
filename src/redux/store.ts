@@ -5,13 +5,12 @@ import {loadState, saveState} from "../utils/localStorageUtils.ts";
 
 
 
-const reducers = combineReducers({
-    counter: counterReducer,
-    inputMin: counterReducer
+const rootReducer = combineReducers({
+    counter: counterReducer
 })
 
 
-const store =legacy_createStore(reducers,loadState())
+const store =legacy_createStore(rootReducer,loadState())
 console.log(store.getState().counter)
 
 store.subscribe(() => {
@@ -19,6 +18,6 @@ store.subscribe(() => {
    saveState(store.getState().counter)
 })
 // export type StoreType = typeof store
-export type AppStoreType = ReturnType<typeof reducers>
+export type AppStoreType = ReturnType<typeof rootReducer>
 
 export default store

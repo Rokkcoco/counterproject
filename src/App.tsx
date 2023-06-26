@@ -3,24 +3,21 @@ import './App.css'
 import {Button} from "./components/Button.tsx";
 import {Input} from "./components/Input.tsx";
 import {CounterDisplay} from "./components/CounterDisplay.tsx";
-import {useDispatch, useSelector} from "react-redux";
-import {AppStoreType} from "./redux/store.ts";
+import {useDispatch} from "react-redux";
 import {
     incrementCounterAC,
-    InitStateType,
     inputMaxValueSetterAC,
     inputMinValueSetterAC,
-    resetCounterAC, setButtonHandlerAC
+    resetCounterAC,
+    setButtonHandlerAC
 } from "./redux/counter-reducer.ts";
-
+import {useTypedSelector} from "./hooks/useTypedSelector.ts";
 
 
 function App() {
     const dispatch = useDispatch()
-    const store = useSelector<AppStoreType, InitStateType>(state => state.counter)
-    const store2 = useSelector<AppStoreType, InitStateType>(state => state.inputMin)
+    const store = useTypedSelector(state => state.counter)
     console.log(store)
-    console.log(store2)
 
     const inputMaxLowerThenInputMin = store.inputMax <= store.inputMin
     const counterEqualToInputMax = store.counter === store.inputMax
