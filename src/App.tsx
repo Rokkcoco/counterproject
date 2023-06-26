@@ -16,12 +16,11 @@ import {useTypedSelector} from "./hooks/useTypedSelector.ts";
 
 function App() {
     const dispatch = useDispatch()
-    const store = useTypedSelector(state => state.counter)
-    console.log(store)
+    const {inputMin, inputMax, counter, settingsButtonState,  displayText, incButtonState, resetButtonState, disableValue} = useTypedSelector(state => state.counter)
 
-    const inputMaxLowerThenInputMin = store.inputMax <= store.inputMin
-    const counterEqualToInputMax = store.counter === store.inputMax
-    const disableValueHigherThenInputMin = store.inputMin < store.disableValue
+    const inputMaxLowerThenInputMin = inputMax <= inputMin
+    const counterEqualToInputMax = counter === inputMax
+    const disableValueHigherThenInputMin = inputMin < disableValue
 
     // useEffect(() => {
     //     const minValue = localStorage.getItem("Minimum counter value")
@@ -92,30 +91,30 @@ function App() {
         <div className='main'>
 
             <div className="inputs">
-                <div className="input">Minimum value:<Input value={store.inputMin} type={"number"}
+                <div className="input">Minimum value:<Input value={inputMin} type={"number"}
                                                             onChange={inputMinValueHandler}
                                                             error={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
                 </div>
-                <div className="input">Maximum value:<Input value={store.inputMax} type={"number"}
+                <div className="input">Maximum value:<Input value={inputMax} type={"number"}
                                                             onChange={inputMaxValueHandler}
                                                             error={inputMaxLowerThenInputMin}/>
                 </div>
                 <div className="buttonSetter"><Button callback={setterHandler} name={"setter"}
-                                                      disabled={store.settingsButtonState || disableValueHigherThenInputMin || inputMaxLowerThenInputMin}/>
+                                                      disabled={settingsButtonState || disableValueHigherThenInputMin || inputMaxLowerThenInputMin}/>
                 </div>
             </div>
 
 
-            <div className="inputs"><CounterDisplay counterLimit={counterEqualToInputMax} counterValue={store.counter}
-                                                    displayText={store.displayText}
+            <div className="inputs"><CounterDisplay counterLimit={counterEqualToInputMax} counterValue={counter}
+                                                    displayText={displayText}
                                                     errorLimit={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
                 <div className="buttonsDisplay">
                     <span className="buttonSetter"><Button callback={counterHandler}
                                                            name={"counter"}
-                                                           disabled={store.incButtonState || counterEqualToInputMax}/></span>
+                                                           disabled={incButtonState || counterEqualToInputMax}/></span>
 
                     <span className="buttonSetter"><Button callback={resetCounter} name={"reset"}
-                                                           disabled={store.resetButtonState}/>
+                                                           disabled={resetButtonState}/>
                     </span>
                 </div>
             </div>
