@@ -3,20 +3,13 @@ import './App.css'
 import {Button} from "./components/Button.tsx";
 import {Input} from "./components/Input.tsx";
 import {CounterDisplay} from "./components/CounterDisplay.tsx";
-import {useDispatch} from "react-redux";
-import {
-    incrementCounterAC,
-    inputMaxValueSetterAC,
-    inputMinValueSetterAC,
-    resetCounterAC,
-    setButtonHandlerAC
-} from "./redux/counter-reducer.ts";
 import {useTypedSelector} from "./hooks/useTypedSelector.ts";
+import {useActions} from "./hooks/useActions.ts";
 
 
 function App() {
-    const dispatch = useDispatch()
     const {inputMin, inputMax, counter, settingsButtonState,  displayText, incButtonState, resetButtonState, disableValue} = useTypedSelector(state => state.counter)
+    const { setButtonHandlerAC, incrementCounterAC, resetCounterAC, inputMinValueSetterAC, inputMaxValueSetterAC} = useActions()
 
     const inputMaxLowerThenInputMin = inputMax <= inputMin
     const counterEqualToInputMax = counter === inputMax
@@ -36,7 +29,7 @@ function App() {
     // }, [])
 
 
-    const setterHandler = () => dispatch(setButtonHandlerAC())
+    const setterHandler = () =>setButtonHandlerAC()
     // {
     //     setStore({
     //         ...store,
@@ -51,15 +44,15 @@ function App() {
     // }
 
 
-    const counterHandler = () => dispatch(incrementCounterAC())
+    const counterHandler = () => incrementCounterAC()
         //setStore({...store, counter: store.counter + 1})
 
 
-    const resetCounter = () => dispatch(resetCounterAC())
+    const resetCounter = () => resetCounterAC()
         //setStore({...store, counter: store.inputMin})
 
 
-    const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => dispatch(inputMinValueSetterAC(+e.currentTarget.value))
+    const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMinValueSetterAC(+e.currentTarget.value)
     // {
     //     setStore({
     //         ...store,
@@ -73,7 +66,7 @@ function App() {
     // }
 
 
-    const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => dispatch(inputMaxValueSetterAC(+e.currentTarget.value))
+    const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMaxValueSetterAC(+e.currentTarget.value)
     // {
     //     setStore({
     //         ...store,

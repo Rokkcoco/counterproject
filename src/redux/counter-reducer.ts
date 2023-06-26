@@ -1,3 +1,10 @@
+import {
+    incrementCounterACType,
+    inputMaxValueSetterACType,
+    inputMinValueSetterACType, resetCounterAC,
+    setButtonHandlerAC
+} from "./action-creators.ts";
+
 export const initState = {
     inputMin: 0,
     inputMax: 5,
@@ -50,31 +57,31 @@ export const counterReducer = (state: InitStateType = initState, action: counter
 }
 
 
-export const incrementCounterAC = () => ({
-    type: "INCREASE-COUNTER"
-}) as const
-
-export const resetCounterAC = () => ({
-    type: "RESET-COUNTER"
-}) as const
-
-export const inputMinValueSetterAC = (number: number) => ({
-    type: "INPUT-MIN-VALUE-SET",
-    payload: {
-        number
-    }
-}) as const
-
-export const inputMaxValueSetterAC = (number: number) => ({
-    type: "INPUT-MAX-VALUE-SET",
-    payload: {
-        number
-    }
-}) as const
-
-export const setButtonHandlerAC = () => ({
-    type: "SET-BUTTON-HANDLER"
-}) as const
+// export const incrementCounterAC = () => ({
+//     type: "INCREASE-COUNTER"
+// }) as const
+//
+// export const resetCounterAC = () => ({
+//     type: "RESET-COUNTER"
+// }) as const
+//
+// export const inputMinValueSetterAC = (number: number) => ({
+//     type: "INPUT-MIN-VALUE-SET",
+//     payload: {
+//         number
+//     }
+// }) as const
+//
+// export const inputMaxValueSetterAC = (number: number) => ({
+//     type: "INPUT-MAX-VALUE-SET",
+//     payload: {
+//         number
+//     }
+// }) as const
+//
+// export const setButtonHandlerAC = () => ({
+//     type: "SET-BUTTON-HANDLER"
+// }) as const
 
 export type counterReducerActionType =
     incrementCounterACType
@@ -82,11 +89,7 @@ export type counterReducerActionType =
     | inputMinValueSetterACType
     | inputMaxValueSetterACType
     | setButtonHandlerAC
-type incrementCounterACType = ReturnType<typeof incrementCounterAC>
-type resetCounterAC = ReturnType<typeof resetCounterAC>
-type inputMinValueSetterACType = ReturnType<typeof inputMinValueSetterAC>
-type inputMaxValueSetterACType = ReturnType<typeof inputMaxValueSetterAC>
-type setButtonHandlerAC = ReturnType<typeof setButtonHandlerAC>
+
 
 export type InitStateType = typeof initState
 
