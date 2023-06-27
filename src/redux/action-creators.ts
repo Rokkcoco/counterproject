@@ -1,31 +1,31 @@
-export const incrementCounterAC = () => ({
+export const incrementCounter = () => ({
     type: "INCREASE-COUNTER"
 }) as const
 
-export const resetCounterAC = () => ({
+export const resetCounter = () => ({
     type: "RESET-COUNTER"
 }) as const
 
-export const inputMinValueSetterAC = (number: number) => ({
+export const inputMinValueSetter = (number: number) => ({
     type: "INPUT-MIN-VALUE-SET",
     payload: {
         number
     }
 }) as const
 
-export const inputMaxValueSetterAC = (number: number) => ({
+export const inputMaxValueSetter = (number: number) => ({
     type: "INPUT-MAX-VALUE-SET",
     payload: {
         number
     }
 }) as const
 
-export const setButtonHandlerAC = () => ({
+export const setButtonHandler = () => ({
     type: "SET-BUTTON-HANDLER"
 }) as const
 
-export type incrementCounterACType = ReturnType<typeof incrementCounterAC>
-export type resetCounterAC = ReturnType<typeof resetCounterAC>
-export type inputMinValueSetterACType = ReturnType<typeof inputMinValueSetterAC>
-export type inputMaxValueSetterACType = ReturnType<typeof inputMaxValueSetterAC>
-export type setButtonHandlerAC = ReturnType<typeof setButtonHandlerAC>
+export type incrementCounterACType = ReturnType<typeof incrementCounter>
+export type resetCounterAC = ReturnType<typeof resetCounter>
+export type inputMinValueSetterACType = ReturnType<typeof inputMinValueSetter>
+export type inputMaxValueSetterACType = ReturnType<typeof inputMaxValueSetter>
+export type setButtonHandlerAC = ReturnType<typeof setButtonHandler>

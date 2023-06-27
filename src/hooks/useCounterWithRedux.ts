@@ -11,14 +11,14 @@ export const useCounterWithRedux = () => {
         resetButtonState, disableValue
     } = useTypedSelector(counterSelector)
     const {
-        setButtonHandlerAC, incrementCounterAC, resetCounterAC, inputMinValueSetterAC, inputMaxValueSetterAC
+        setButtonHandler, incrementCounter, resetCounter, inputMinValueSetter, inputMaxValueSetter
     } = useActions()
 
-    const setterHandler = () => setButtonHandlerAC()
-    const counterHandler = () => incrementCounterAC()
-    const resetCounter =() => resetCounterAC()
-    const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMinValueSetterAC(+e.currentTarget.value)
-    const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMaxValueSetterAC(+e.currentTarget.value)
+    const setterHandler = () => setButtonHandler()
+    const counterHandler = () => incrementCounter()
+    const resetCounterHandler =() => resetCounter()
+    const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMinValueSetter(+e.currentTarget.value)
+    const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMaxValueSetter(+e.currentTarget.value)
 
 
     const inputMaxLowerThenInputMin = inputMax <= inputMin
@@ -36,14 +36,9 @@ export const useCounterWithRedux = () => {
         inputMaxLowerThenInputMin,
         counterEqualToInputMax,
         disableValueHigherThenInputMin,
-        disableValue,
-        incrementCounterAC,
-        resetCounterAC,
-        inputMinValueSetterAC,
-        inputMaxValueSetterAC,
         setterHandler,
         counterHandler,
-        resetCounter,
+        resetCounterHandler,
         inputMinValueHandler,
         inputMaxValueHandler
     }

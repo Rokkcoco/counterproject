@@ -19,7 +19,7 @@ function App() {
         disableValueHigherThenInputMin,
         setterHandler,
         counterHandler,
-        resetCounter,
+        resetCounterHandler,
         inputMinValueHandler,
         inputMaxValueHandler
     } = useCounterWithRedux()
@@ -50,7 +50,7 @@ function App() {
                                                            name={"counter"}
                                                            disabled={incButtonState || counterEqualToInputMax}/></span>
 
-                    <span className="buttonSetter"><Button callback={resetCounter} name={"reset"}
+                    <span className="buttonSetter"><Button callback={resetCounterHandler} name={"reset"}
                                                            disabled={resetButtonState}/>
                     </span>
                 </div>
