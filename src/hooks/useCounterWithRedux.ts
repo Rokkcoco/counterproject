@@ -5,14 +5,19 @@ import {ChangeEvent} from "react";
 
 
 export const useCounterWithRedux = () => {
-    const {
-        inputMin, inputMax, counter,
-        settingsButtonState, displayText, incButtonState,
-        resetButtonState, disableValue
-    } = useTypedSelector(counterSelector)
-    const {
-        setButtonHandler, incrementCounter, resetCounter, inputMinValueSetter, inputMaxValueSetter
-    } = useActions()
+    const {inputMin,
+        inputMax,
+        counter,
+        settingsButtonState,
+        displayText,
+        incButtonState,
+        resetButtonState,
+        disableValue} = useTypedSelector(counterSelector)
+    const {setButtonHandler,
+        incrementCounter,
+        resetCounter,
+        inputMinValueSetter,
+        inputMaxValueSetter} = useActions()
 
     const setterHandler = () => setButtonHandler()
     const counterHandler = () => incrementCounter()

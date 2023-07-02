@@ -17,3 +17,4 @@ export const Input= ({ error, onChange, ...restProps}: InputType) => {
     )
 }
 //type={type} value={value}, надо ли убирать type omit?
+

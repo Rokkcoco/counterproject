@@ -11,8 +11,6 @@ function App() {
         inputMax,
         resetButtonState,
         incButtonState,
-        displayText,
-        counter,
         settingsButtonState,
         inputMaxLowerThenInputMin,
         counterEqualToInputMax,
@@ -40,11 +38,11 @@ function App() {
                                                       disabled={settingsButtonState || disableValueHigherThenInputMin || inputMaxLowerThenInputMin}/>
                 </div>
             </div>
+{/*counterLimit={counterEqualToInputMax} counterValue={counter}*/}
+{/*            displayText={displayText}*/}
+{/*            errorLimit={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}*/}
 
-
-            <div className="inputs"><CounterDisplay counterLimit={counterEqualToInputMax} counterValue={counter}
-                                                    displayText={displayText}
-                                                    errorLimit={inputMaxLowerThenInputMin || disableValueHigherThenInputMin}/>
+            <div className="inputs"><CounterDisplay />
                 <div className="buttonsDisplay">
                     <span className="buttonSetter"><Button callback={counterHandler}
                                                            name={"counter"}
