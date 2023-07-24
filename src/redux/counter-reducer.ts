@@ -8,7 +8,7 @@ import {
 export const initState = {
     inputMin: 0,
     inputMax: 5,
-    counter: 0,
+    counter: 0 as number | null,
     disableValue: 0,
     displayText: true,
     resetButtonState: false,
@@ -19,13 +19,13 @@ export const initState = {
 export const counterReducer = (state: InitStateType = initState, action: counterReducerActionType): InitStateType => {
     switch (action.type) {
         case "INCREASE-COUNTER":
-            return {...state, counter: state.counter + 1}
+            return {...state, counter: state.counter as number + 1 }
         case "RESET-COUNTER":
             return {...state, counter: state.inputMin}
         case "INPUT-MAX-VALUE-SET":
             return {
                 ...state,
-                counter: NaN,
+                counter: null,
                 settingsButtonState: false,
                 resetButtonState: true,
                 incButtonState: true,
@@ -35,7 +35,7 @@ export const counterReducer = (state: InitStateType = initState, action: counter
         case "INPUT-MIN-VALUE-SET":
             return {
                 ...state,
-                counter: NaN,
+                counter: null,
                 settingsButtonState: false,
                 resetButtonState: true,
                 incButtonState: true,

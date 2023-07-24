@@ -14,13 +14,13 @@ export const CounterDisplay = () => {
         displayText,
         inputMaxLowerThenInputMin,
         disableValueHigherThenInputMin} = useCounterWithRedux()
+    console.log(counter)
     return (
         <div className={counterEqualToInputMax || inputMaxLowerThenInputMin || disableValueHigherThenInputMin ? `${s.display} ${s.max}` : `${s.display}`}>
             {(inputMaxLowerThenInputMin || disableValueHigherThenInputMin)
-                ? "incorrect value" : counter ===null
-                    ? "set value and press set button" : displayText
+                ? "incorrect value"
+                    : displayText
                         ? counter : "set value and press set button"}
         </div>
     );
 };
-
