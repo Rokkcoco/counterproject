@@ -1,9 +1,4 @@
-import {
-    incrementCounterACType,
-    inputMaxValueSetterACType,
-    inputMinValueSetterACType, resetCounterAC,
-    setButtonHandlerAC
-} from "./action-creators.ts";
+import {CounterReducerActionType} from "./action-types.ts";
 
 export const initState = {
     inputMin: 0,
@@ -16,7 +11,7 @@ export const initState = {
     settingsButtonState: false
 }
 
-export const counterReducer = (state: InitStateType = initState, action: counterReducerActionType): InitStateType => {
+export const counterReducer = (state: InitStateType = initState, action: CounterReducerActionType): InitStateType => {
     switch (action.type) {
         case "INCREASE-COUNTER":
             return {...state, counter: state.counter as number + 1 }
@@ -55,13 +50,6 @@ export const counterReducer = (state: InitStateType = initState, action: counter
             return state
     }
 }
-
-export type counterReducerActionType =
-    incrementCounterACType
-    | resetCounterAC
-    | inputMinValueSetterACType
-    | inputMaxValueSetterACType
-    | setButtonHandlerAC
 
 
 export type InitStateType = typeof initState

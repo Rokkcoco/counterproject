@@ -24,8 +24,3 @@ export const setButtonHandler = () => ({
     type: "SET-BUTTON-HANDLER"
 }) as const
 
-export type incrementCounterACType = ReturnType<typeof incrementCounter>
-export type resetCounterAC = ReturnType<typeof resetCounter>
-export type inputMinValueSetterACType = ReturnType<typeof inputMinValueSetter>
-export type inputMaxValueSetterACType = ReturnType<typeof inputMaxValueSetter>
-export type setButtonHandlerAC = ReturnType<typeof setButtonHandler>
