@@ -1,18 +1,25 @@
 import {useTypedSelector} from "./useTypedSelector.ts";
-import {counterSelector} from "../redux/selectors.ts";
+import {
+    counterSelector,
+    disableValueSelector, displayTextSelector, incButtonStateSelector,
+    inputMaxSelector,
+    inputMinSelector, resetButtonStateSelector,
+    settingsButtonStateSelector
+} from "../redux/counter-selectors.ts";
 import {useActions} from "./useActions.ts";
 import {ChangeEvent} from "react";
 
 
 export const useCounterWithRedux = () => {
-    const {inputMin,
-        inputMax,
-        counter,
-        settingsButtonState,
-        displayText,
-        incButtonState,
-        resetButtonState,
-        disableValue} = useTypedSelector(counterSelector)
+    //разбить на множество? хотя компонент один
+    const counter = useTypedSelector(counterSelector)
+    const inputMax = useTypedSelector(inputMaxSelector)
+    const inputMin = useTypedSelector(inputMinSelector)
+    const disableValue = useTypedSelector(disableValueSelector)
+    const settingsButtonState = useTypedSelector(settingsButtonStateSelector)
+    const resetButtonState = useTypedSelector(resetButtonStateSelector)
+    const incButtonState = useTypedSelector(incButtonStateSelector)
+    const displayText = useTypedSelector(displayTextSelector)
     const {setButtonHandler,
         incrementCounter,
         resetCounter,
