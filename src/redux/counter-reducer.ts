@@ -13,11 +13,11 @@ export const initState = {
 
 export const counterReducer = (state: InitStateType = initState, action: CounterReducerActionType): InitStateType => {
     switch (action.type) {
-        case "INCREASE-COUNTER":
+        case "counter/counter-reducer/INCREASE-COUNTER":
             return {...state, counter: state.counter as number + 1 }
-        case "RESET-COUNTER":
+        case "counter/counter-reducer/RESET-COUNTER":
             return {...state, counter: state.inputMin}
-        case "INPUT-MAX-VALUE-SET":
+        case "counter/counter-reducer/INPUT-MAX-VALUE-SET":
             return {
                 ...state,
                 counter: null,
@@ -27,7 +27,7 @@ export const counterReducer = (state: InitStateType = initState, action: Counter
                 displayText: false,
                 inputMax: action.payload.number
             }
-        case "INPUT-MIN-VALUE-SET":
+        case "counter/counter-reducer/INPUT-MIN-VALUE-SET":
             return {
                 ...state,
                 counter: null,
@@ -37,7 +37,7 @@ export const counterReducer = (state: InitStateType = initState, action: Counter
                 displayText: false,
                 inputMin: action.payload.number
             }
-        case "SET-BUTTON-HANDLER":
+        case "counter/counter-reducer/SET-BUTTON-HANDLER":
             return {
                 ...state,
                 counter: state.inputMin,

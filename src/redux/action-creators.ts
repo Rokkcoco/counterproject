@@ -1,26 +1,26 @@
 export const incrementCounter = () => ({
-    type: "INCREASE-COUNTER"
+    type: "counter/counter-reducer/INCREASE-COUNTER"
 }) as const
 
 export const resetCounter = () => ({
-    type: "RESET-COUNTER"
+    type: "counter/counter-reducer/RESET-COUNTER"
 }) as const
 
 export const inputMinValueSetter = (number: number) => ({
-    type: "INPUT-MIN-VALUE-SET",
+    type: "counter/counter-reducer/INPUT-MIN-VALUE-SET",
     payload: {
         number
     }
 }) as const
 
 export const inputMaxValueSetter = (number: number) => ({
-    type: "INPUT-MAX-VALUE-SET",
+    type: "counter/counter-reducer/INPUT-MAX-VALUE-SET",
     payload: {
         number
     }
 }) as const
 
 export const setButtonHandler = () => ({
-    type: "SET-BUTTON-HANDLER"
+    type: "counter/counter-reducer/SET-BUTTON-HANDLER"
 }) as const
 
