@@ -3,7 +3,7 @@ export const incrementCounter = () => ({
 }) as const
 
 export const resetCounter = () => ({
-    type: "counter/counter-reducer/RESET-COUNTERR"
+    type: "counter/counter-reducer/RESET-COUNTER"
 }) as const
 
 export const inputMinValueSetter = (number: number) => ({
