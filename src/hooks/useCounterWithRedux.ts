@@ -29,8 +29,8 @@ export const useCounterWithRedux = () => {
     const setterHandler = () => setButtonHandler()
     const counterHandler = () => incrementCounter()
     const resetCounterHandler =() => resetCounter()
-    const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMinValueSetter(+e.currentTarget.value)
-    const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMaxValueSetter(+e.currentTarget.value)
+    const inputMinValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMinValueSetter(Math.floor(+e.currentTarget.value))
+    const inputMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => inputMaxValueSetter(Math.floor(+e.currentTarget.value))
 
 
     const inputMaxLowerThenInputMin = inputMax <= inputMin

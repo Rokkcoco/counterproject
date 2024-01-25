@@ -9,28 +9,23 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
 }
 .inputs {
   display: flex;
   flex-direction: column;
   margin: 100px;
-  border: 3px solid chocolate  ;
-width: 20vw;
+  border: 3px solid chocolate;
   color: darkorange;
   font-size: 20px;
+  width: 300px;
+  height: 200px;
 }
-.inputs {
-
-}
-
 .buttonSetter {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   flex-direction: row;
 }
-
 .buttonsDisplay {
   display: flex;
   flex-direction: row;
